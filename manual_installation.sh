@@ -23,8 +23,8 @@ download_and_verify_iso() {
     echo "****************************"
     DOWNLOADED_ISO_CHECKSUM=$(sha256sum "${ISO_FILENAME}" | awk '{print $1}')
     [ "$ISO_CHECKSUM" != "$DOWNLOADED_ISO_CHECKSUM" ] && { echo "Checksum error on downloaded ISO."; exit 1; }
-    echo "Wanted Checksum: $ISO_CHECKSUM"
-    echo "Actual Checksum: $DOWNLOADED_ISO_CHECKSUM"
+    echo "Wanted SHA256 Checksum: $ISO_CHECKSUM"
+    echo "Actual SHA256 Checksum: $DOWNLOADED_ISO_CHECKSUM"
     echo "Signature of '${ISO_FILENAME}' is OK..."
 }
 
