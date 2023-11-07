@@ -1,0 +1,44 @@
+---
+- name: Check if current user has root privileges
+  become: true
+  command: id -u
+  register: result
+
+- name: Fail if current user doesn't have root privileges
+  fail:
+    msg: "This task requires root privileges"
+  when: result.stdout != "0"
+
+- name: Check if the system is Arch Linux
+  stat:
+    path: /etc/arch-release
+  register: arch_release
+  changed_when: false
+
+- name: Fail if not running in Arch Linux
+  fail:
+    msg: "This script must be run in Arch Linux."
+  when: not arch_release.stat.exists
+
+- name: Check if Pacman is blocked
+  stat:
+    path: /var/lib/pacman/db.lck
+  register: pacman_db_lck
+  changed_when: false
+
+- name: Fail if Pacman is blocked
+  fail:
+    msg: "Pacman is blocked. If not running, remove /var/lib/pacman/db.lck."
+  when: pacman_db_lck.stat.exists
+
+- name: Check if running in a Docker container
+  stat:
+    path: /.dockerenv
+  register: docker_env
+  changed_when: false
+
+- name: Fail if running in a Docker container
+  fail:
+    msg: "Docker container is not supported."
+  when: docker_env.stat.exists
+...

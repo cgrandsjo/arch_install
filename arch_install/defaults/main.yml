@@ -1,0 +1,10 @@
+---
+arch_install_disk: /dev/sda
+arch_install_filesystem: btrfs
+arch_install_keymap: se
+arch_install_mount_options: noatime,compress=zstd,ssd,commit=120
+arch_install_name_of_machine: myhostname
+arch_install_password: mypassword
+arch_install_timezone: Europe/Stockholm
+arch_install_username: myusername
+...

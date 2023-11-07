@@ -1,0 +1,3 @@
+- name: Include prechecks playbook
+  include_tasks: prechecks.yml
+  tags: prechecks
