@@ -36,7 +36,7 @@ write_iso() {
     echo ""
     echo "Run this command with the correct value for 'of='"
     echo ""
-    echo "sudo dd if=archlinux.iso of=/dev/sdX bs=4M status=progress && sync"
+    echo "sudo dd if=${ISO_FILENAME} of=/dev/sdX bs=4M status=progress && sync"
 }
 
 main() {
