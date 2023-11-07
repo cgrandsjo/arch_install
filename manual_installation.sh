@@ -14,7 +14,7 @@ download_and_verify_iso() {
     ISO_FILENAME="archlinux-${ARCH_RELEASE}-x86_64.iso"
     ISO_DL_PATH="https://ftp.lysator.liu.se/pub/archlinux/iso/${ARCH_RELEASE}/${ISO_FILENAME}"
     rm arch_checksums.html
-    [ ! -f "$ISO_FILENAME" ] && wget -q --show-progress -O "$ISO_FILENAME" "$ISO_DL_PATH"
+    wget -q -c --show-progress -O "$ISO_FILENAME" "$ISO_DL_PATH"
 
     echo ""
     echo "****************************"
@@ -24,7 +24,7 @@ download_and_verify_iso() {
     echo "Wanted SHA256 Checksum: $ISO_CHECKSUM"
     echo "Actual SHA256 Checksum: $DOWNLOADED_ISO_CHECKSUM"
     [ "$ISO_CHECKSUM" != "$DOWNLOADED_ISO_CHECKSUM" ] && \
-    { echo "Checksum error on downloaded ISO. File deleted. Rerun the script..."; rm "$ISO_FILENAME"; exit 1; }
+    { echo "Checksum error on downloaded ISO. Rerun the script..."; exit 1; }
     echo "Checksum is OK..."
 }
 
