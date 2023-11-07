@@ -36,7 +36,7 @@ write_iso() {
     echo "Partitions:"
     sudo parted -l | grep "Disk /"
     echo ""
-    echo "Run this command with the correct value for 'of='"
+    echo "Run the following command with the correct value for 'of='"
     echo ""
     echo "sudo dd if=${ISO_FILENAME} of=/dev/sdX bs=4M status=progress && sync"
 }
