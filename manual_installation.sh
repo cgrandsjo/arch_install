@@ -19,13 +19,14 @@ download_and_verify_iso() {
     echo -e "Downloading '${ISO_FILENAME}'...\n"
 
     [ ! -f "$ISO_FILENAME" ] && curl -o "$ISO_FILENAME" "$ISO_DL_PATH"
-    DOWNLOADED_ISO_CHECKSUM=$(sha256sum "${ISO_FILENAME}" | awk '{print $1}' )
-    [ "$ISO_CHECKSUM" != "$DOWNLOADED_ISO_CHECKSUM" ] && { echo "Checksum error: ISO file checksum does not match the downloaded ISO file checksum."; exit 1; }
+
 
     echo ""
     echo "****************************"
     echo "*** 1.2 Verify signature ***"
     echo "****************************"
+    DOWNLOADED_ISO_CHECKSUM=$(sha256sum "${ISO_FILENAME}" | awk '{print $1}' )
+    [ "$ISO_CHECKSUM" != "$DOWNLOADED_ISO_CHECKSUM" ] && { echo "Checksum error on downloaded ISO."; exit 1; }
     echo "Signature of '${ISO_FILENAME}' is OK..."
 }
 
