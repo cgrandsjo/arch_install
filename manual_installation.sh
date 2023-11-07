@@ -3,7 +3,7 @@
 # Installation based on https://wiki.archlinux.org/title/Installation_guide
 
 # 1. Pre-installation
-# Download Arch Linux ISO
+
 download_and_verify_iso() {
     echo "****************************************"
     echo "*** 1.1 Aquire an installation image ***"
