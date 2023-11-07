@@ -2,8 +2,6 @@
 
 # Installation based on https://wiki.archlinux.org/title/Installation_guide
 
-set -e
-
 # 1. Pre-installation
 # Download Arch Linux ISO
 download_and_verify_iso() {
@@ -24,7 +22,7 @@ download_and_verify_iso() {
     echo "****************************"
     echo "*** 1.2 Verify signature ***"
     echo "****************************"
-    DOWNLOADED_ISO_CHECKSUM=$(sha256sum "${ISO_FILENAME}" | awk '{print $1}' )
+    DOWNLOADED_ISO_CHECKSUM=$(sha256sum "${ISO_FILENAME}" | awk '{print $1}')
     [ "$ISO_CHECKSUM" != "$DOWNLOADED_ISO_CHECKSUM" ] && { echo "Checksum error on downloaded ISO."; exit 1; }
     echo "Signature of '${ISO_FILENAME}' is OK..."
 }
