@@ -15,6 +15,7 @@ download_and_verify_iso() {
     ISO_DL_PATH="https://ftp.lysator.liu.se/pub/archlinux/iso/${ARCH_RELEASE}/${ISO_FILENAME}"
     rm arch_checksums.html
     wget -q -c --show-progress -O "$ISO_FILENAME" "$ISO_DL_PATH"
+    echo "Download complete..."
 
     echo ""
     echo "****************************"
