@@ -20,7 +20,6 @@ download_and_verify_iso() {
 
     [ ! -f "$ISO_FILENAME" ] && curl -o "$ISO_FILENAME" "$ISO_DL_PATH"
 
-
     echo ""
     echo "****************************"
     echo "*** 1.2 Verify signature ***"
