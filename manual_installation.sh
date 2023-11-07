@@ -51,16 +51,3 @@ main() {
 }
 
 main
-
-
-
-
-efi=false
-loadkeys sv-latin1
-ls /sys/firmware/efi/efivars && efi=true
-echo "efi: $efi"
-ping archlinux.org -c3 || { echo "Cannot connect to Internet."; exit 1; }
-timedatectl set-ntp true
-# parition disk
-# format disks
-# mkswap?
