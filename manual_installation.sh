@@ -25,7 +25,7 @@ download_and_verify_iso() {
     echo "Actual SHA256 Checksum: $DOWNLOADED_ISO_CHECKSUM"
     [ "$ISO_CHECKSUM" != "$DOWNLOADED_ISO_CHECKSUM" ] && \
     { echo "Checksum error on downloaded ISO. File deleted. Rerun the script..."; rm "$ISO_FILENAME"; exit 1; }
-    echo "Signature of '${ISO_FILENAME}' is OK..."
+    echo "Checksum is OK..."
 }
 
 write_iso() {
